@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L.O.A.D. | Life On A Deadline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Modern UI Enhancements */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Enhanced Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(210, 177, 243, 0.3)), url('BossLady.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      padding: 2rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(111, 4, 188, 0.2), rgba(106, 13, 173, 0.3));
+      z-index: 1;
+    }
+
+    .hero * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      font-weight: 600;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero .tagline {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #f4d06f;
+      font-weight: 300;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero .subtext {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #f4d06f, #ffeaa7);
+      color: #000;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 30px rgba(244, 208, 111, 0.4);
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(244, 208, 111, 0.6);
+      background: linear-gradient(135deg, #ffeaa7, #f4d06f);
+    }
+
+    /* Enhanced Tools Section */
+    #tools {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      margin: 2rem;
+      border-radius: 25px;
+      padding: 3rem 2rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    #tools h2 {
+      color: #430073;
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #4B0082, #8A2BE2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #tools p {
+      color: #666;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Stunning Explore Section */
+    #sections {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)) !important;
+      backdrop-filter: blur(15px) !important;
+      border-radius: 30px !important;
+      margin: 3rem 2rem !important;
+      padding: 4rem 2rem !important;
+      box-shadow: 0 25px 80px rgba(75, 0, 130, 0.15) !important;
+      border: 1px solid rgba(255, 255, 255, 0.4) !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #sections::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(106, 13, 173, 0.05) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+      z-index: 0;
+    }
+
+    #sections>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    #sections h2 {
+      color: #4B0082 !important;
+      font-size: 3rem !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      margin-bottom: 1rem !important;
+      background: linear-gradient(135deg, #4B0082, #8A2BE2, #9370DB) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+
+    #sections h3 {
+      color: #6A0DAD !important;
+      font-size: 1.3rem !important;
+      font-weight: 400 !important;
+      text-align: center !important;
+      margin-bottom: 3rem !important;
+      opacity: 0.8;
+    }
+
+    /* Modern Card Grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 15px 40px rgba(75, 0, 130, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(75, 0, 130, 0.2);
+      border-color: rgba(106, 13, 173, 0.3);
+    }
+
+    .card h3 {
+      color: #4B0082;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #4B0082, #8A2BE2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .card-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .card-btn:hover {
+      background: linear-gradient(135deg, #764ba2, #667eea);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Enhanced Navigation */
+    nav {
+      background: rgba(0, 0, 0, 0.95) !important;
+      backdrop-filter: blur(15px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Enhanced Footer */
+    footer {
+      background: linear-gradient(135deg, #4B0082, #6A0DAD);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+      font-size: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      #tools,
+      #sections {
+        margin: 1rem !important;
+        padding: 2rem 1rem !important;
+      }
+
+      #sections h2 {
+        font-size: 2.2rem !important;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+      }
+
+      .hero .tagline {
+        font-size: 1.2rem;
+      }
+
+      .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <script type="module" src="js/firebase-config.js"></script>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">L.O.A.D.</div>
+    <div class="menu-icon" onclick="toggleSidebar()">&#9776;</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="productivity.html">Study</a></li>
+      <li><a href="lifestyle.html">Lifestyle</a></li>
+      <li><a href="fitness.html">Fitness</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="aboutme.html">About Me</a></li>
+      <li><a href="contact.html">Feedback</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li id="authArea">
+        <a href="login.html">Login</a> /
+        <a href="signup.html">Sign Up</a>
+        <br><small style="color: #ccc;">
+          <a href="simple-login.html" style="color: #80c6ff;">Simple Login</a>
+        </small>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Sidebar for Mobile -->
+  <div class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" onclick="toggleSidebar()">✕ Close</a>
+    <a href="index.html" onclick="toggleSidebar()">Home</a>
+    <a href="productivity.html" onclick="toggleSidebar()">Study</a>
+    <a href="lifestyle.html" onclick="toggleSidebar()">Lifestyle</a>
+    <a href="fitness.html" onclick="toggleSidebar()">Fitness</a>
+    <a href="budget.html" onclick="toggleSidebar()">Budget</a>
+    <a href="aboutme.html" onclick="toggleSidebar()">About Me</a>
+    <a href="contact.html" onclick="toggleSidebar()">Feedback</a>
+    <a href="profile.html" onclick="toggleSidebar()">Profile</a>
+
+    <div id="mobileAuthArea" style="padding: 1rem;">
+      <a href="login.html" onclick="toggleSidebar()">Login</a> /
+      <a href="signup.html" onclick="toggleSidebar()">Sign Up</a>
+    </div>
+
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <h1>Life On A Deadline</h1>
+    <p class="tagline">L.O.A.Ding into your full potential.</p>
+    <p class="subtext">Cause if you're not living, what are you doing babies??</p>
+    <a href="#tools" class="cta-button">Start Now</a>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools">
+    <h2>I’m tired of all the tips and tricks — we need action.</h2>
+    <p>From productivity to wellness — start using real tools that move your life forward. No fluff. Just focus.</p>
+
+    <section id="sections">
+      <h2 style="text-align: center;">Explore Sections</h2>
+      <h3 style="text-align: center;">L.O.A.Ding into your full potential</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Study</h3>
+          <p>Time-blocking tools, study planners, and focus helpers for your busiest seasons.</p>
+          <a href="productivity.html" class="card-btn">Explore</a>
+        </div>
+        <div class="card">
+          <h3>Lifestyle</h3>
+          <p>Self-care check-ins, daily routines, and balance-focused resources to thrive as a student.</p>
+          <a href="lifestyle.html" class="card-btn">Explore</a>
+        </div>
+        <div class="card">
+          <h3>Fitness</h3>
+          <p>Track workouts, log energy, and stay committed to your physical wellness journey.</p>
+          <a href="fitness.html" class="card-btn">Explore</a>
+        </div>
+        <div class="card">
+          <h3>Budget</h3>
+          <p>As a student, social media and fast food want your money. So let’s help you budget smart.</p>
+          <a href="budget.html" class="card-btn">Explore</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Life On A Deadline. Built with action.
+  </footer>
+
+  <!-- Sidebar Toggle Script -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    }
+  </script>
+
+  <!-- Auth Logic -->
+  <script type="module">
+    // Simple function to handle logout
+    window.handleLogout = function () {
+      // Clear any stored user data
+      localStorage.removeItem('load_current_user');
+
+      // Reset navigation to show login links
+      const authArea = document.getElementById("authArea");
+      const mobileAuthArea = document.getElementById("mobileAuthArea");
+
+      if (authArea) {
+        authArea.innerHTML = '<a href="login.html">Login</a> / <a href="signup.html">Sign Up</a>';
+      }
+
+      if (mobileAuthArea) {
+        mobileAuthArea.innerHTML = `
+          <a href="login.html" onclick="toggleSidebar()">Login</a> /
+          <a href="signup.html" onclick="toggleSidebar()">Sign Up</a>
+        `;
+      }
+
+      alert('Logged out successfully!');
+    };
+
+    // Try to load Firebase auth system
+    try {
+      const { AuthManager } = await import('./js/modules/auth.js');
+      const { UIManager } = await import('./js/modules/ui.js');
+
+      const authManager = new AuthManager();
+      const authArea = document.getElementById("authArea");
+      const mobileAuthArea = document.getElementById("mobileAuthArea");
+
+      // Initialize auth manager
+      authManager.init();
+
+      // Handle auth state changes
+      authManager.onAuthStateChange((user) => {
+        if (user) {
+          // User is logged in - show welcome message and logout
+          const userEmail = user.email.split('@')[0];
+
+          if (authArea) {
+            authArea.innerHTML = `
+              <span style="color:white; font-weight:bold;">Welcome, ${userEmail}</span>
+              <a href="#" onclick="handleFirebaseLogout()" style="margin-left: 1rem;">Logout</a>
+            `;
+          }
+
+          if (mobileAuthArea) {
+            mobileAuthArea.innerHTML = `
+              <span style="color:white; font-weight:bold;">Welcome, ${userEmail}</span><br>
+              <a href="#" onclick="handleFirebaseLogout(); toggleSidebar();">Logout</a>
+            `;
+          }
+        } else {
+          // User is not logged in - show login links (already in HTML)
+        }
+      });
+
+      // Firebase logout handler
+      window.handleFirebaseLogout = async function () {
+        const result = await authManager.logout();
+        if (result.success) {
+          window.location.reload();
+        }
+      };
+
+    } catch (error) {
+      console.log('Firebase auth not available, using simple mode');
+      // Login links are already shown in HTML, so nothing else needed
+    }
+  </script>
+
+
+  <!-- Floating AI Chat Button -->
+  <button id="customChatBtn" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+   background: linear-gradient(135deg, #6a0dad, #c74aac);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+  cursor: pointer;
+">
+    💬 Chat with<br>L.O.A.D Ai
+  </button>
+
+  <script type="module">
+    import { auth } from './firebase-config.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
+    const chatBtn = document.getElementById("customChatBtn");
+    let chatScriptLoaded = false;
+
+    onAuthStateChanged(auth, (user) => {
+      chatBtn.onclick = () => {
+        if (user) {
+          if (!chatScriptLoaded) {
+            // Load Chatbase config
+            window.chatbaseConfig = {
+              chatbotId: "czT4oi2tu5sm0RW2n0-iC",
+              welcomeMessage: "Welcome to L.O.A.D! What can I help you improve today?",
+              theme: {
+                buttonBackgroundColor: "#6A0DAD",
+                buttonTextColor: "#ffffff"
+              }
+            };
+
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.defer = true;
+            document.body.appendChild(script);
+
+            chatScriptLoaded = true;
+
+            // Hide button after 1 second
+            setTimeout(() => {
+              chatBtn.style.display = 'none';
+            }, 1000);
+          } else {
+            // Toggle chat if already loaded
+            const bubble = document.querySelector('.chatbase-bubble');
+            if (bubble) bubble.click();
+          }
+        } else {
+          // User is not logged in
+          alert("👋 Hey loves, you need a free account to chat with the L.O.A.D Assistant. Please log in or sign up 💜");
+        }
+      };
+    });
+  </script>
+
+
+
+</body>
+
+</html>
